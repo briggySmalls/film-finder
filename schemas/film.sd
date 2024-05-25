@@ -1,0 +1,59 @@
+schema film {
+  document film {
+    struct genre {
+      field id type int {}
+      field name type string {}
+    }
+    struct cast {
+      field name type string {}
+      field id type int {}
+      field order type int {}
+      field character type string {}
+      field credit_id type string {}
+      field cast_id type int {}
+      field profile_path type string {}
+    }
+    struct director {
+      field name type string {}
+      field job type string {}
+      field id type int {}
+      field department type string {}
+      field credit_id type string {}
+      field profile_path type string {}
+    }
+
+    field id type int {
+      indexing: summary | attribute
+    }
+    field title type string {
+      indexing: summary | index
+    }
+    field overview type string {
+      indexing: summary | index
+    }
+    field tagline type string {
+      indexing: summary | index
+    }
+    field release_date type string {
+      indexing: summary | index
+    }
+    field genres type array<genre> {
+      struct-field id {
+        indexing: summary | attribute
+      }
+      struct-field name {
+        indexing: name
+      }
+    }
+    field cast type array<cast> {
+      struct-field id {
+        indexing: summary | attribute
+      }
+    }
+    field directors type array<director> {
+      struct-field id {
+        indexing: summary | attribute
+      }
+    }
+  }
+}
