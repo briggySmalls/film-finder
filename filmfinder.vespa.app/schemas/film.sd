@@ -31,6 +31,15 @@ schema film {
     field overview type string {
       indexing: summary | index
     }
+    field overview_embedding type tensor<float>(x[384]) {
+      indexing: summary | attribute | index
+      index {
+        hnsw {
+          max-links-per-node: 16
+          neighbors-to-explore-at-insert: 100
+        }
+      }
+    }
     field tagline type string {
       indexing: summary | index
     }
@@ -41,9 +50,7 @@ schema film {
       struct-field id {
         indexing: summary | attribute
       }
-      struct-field name {
-        indexing: name
-      }
+      struct-field name {}
     }
     field cast type array<cast> {
       struct-field id {
