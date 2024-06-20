@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "filmfinder-search"
+version = "0.1.0"
+description = "Search application for the filmfinder project"
+authors = ["Sam Briggs <git@sambriggs.dev>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+jupyter = "^1.0.0"
+notebook = "^7.2.1"
+pyvespa = "^0.41.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
